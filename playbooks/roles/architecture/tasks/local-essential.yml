@@ -1,0 +1,54 @@
+- name: remomve things that i dont use
+  action: apt pkg={{item}} state=absent
+  with_items:
+    - thunderbird  
+    - hexchat
+    - brasero
+    - banshee
+    - transmission-common
+    - transmission-gtk
+    - gthumb
+    - gthumb-data
+    - libreoffice-draw
+    - libreoffice-math
+    - libreoffice-impress
+    - tomboy
+
+- name: Install local-essential packages just for my PC
+  apt: pkg={{ item }} state=latest update_cache=yes install_recommends=yes
+  with_items:
+  - nfs-kernel-server
+  - skype
+  - qbittorrent
+  - acpi
+  - gddrescue
+  - gparted
+  - cheese
+  - nmap
+  - aircrack-ng
+  - dsniff
+  - npm
+  - curl
+  - chromium-browser
+  - virtualbox-4.3
+  - sublime-text
+  - macchanger
+
+- name: config npm
+  file: src=/usr/bin/nodejs dest=/usr/bin/node  state=link
+
+- name: Clone dotfiles
+  git: repo=https://github.com/mullerivan/dotfiles.git dest=/home/ivan/.dotfiles accept_hostkey=yes
+  sudo: false
+
+- name: config mi dotfiles
+  shell: sh /home/ivan/.dotfiles/setup.sh
+  sudo: true
+
+# - name: curl
+#   shell: curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+#   sudo: false
+
+
+
+

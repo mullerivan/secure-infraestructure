@@ -1,0 +1,6 @@
+ exim4_dc_eximconfig_configtype: 'satellite'
+ exim4_dc_use_split_config: 'false'
+ exim4_dc_readhost: 'lacaisse.com'
+ exim4_dc_smarthost: 'smtp.mandrillapp.com::587'
+ exim4_dc_hide_mailname: 'true'
+ exim4_passwd_client: ['*.mandrillapp.com:your-mandrill-username@yourdomain.com:hola']

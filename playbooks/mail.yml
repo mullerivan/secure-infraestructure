@@ -1,0 +1,13 @@
+---
+- name: setup Mail server
+  hosts: all
+  gather_facts: false
+  user: vagrant
+  sudo: yes
+  sudo_user: root
+  vars_files:
+    - vars/default.yml
+    - vars/mail.yml
+  roles:
+   - essential
+   - pbuyle.exim4 #==>https://galaxy.ansible.com/list#/roles/1699

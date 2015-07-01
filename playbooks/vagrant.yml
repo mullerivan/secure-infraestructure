@@ -1,0 +1,45 @@
+---
+- name: setup ngios locales and timezone
+  hosts: all
+  gather_facts: false
+  user: vagrant
+  sudo: yes
+  sudo_user: root
+  vars_files:
+    #- vars/nagios_cliente.yml
+    - vars/nagios_server.yml
+  #roles:
+   #- bcoe.nagios
+    #role para instalar  en los clientes
+   #- bobmaerten.nagios-nrpe-server
+#https://galaxy.ansible.com/list#/roles/384
+
+# - name: sup escrow production architecture on vagrant box
+#   hosts: all
+#   gather_facts: false
+#   user: vagrant
+#   sudo: yes
+#   sudo_user: root
+#   vars_files:
+#     - vars/dev.yml
+#   roles:
+#    - arch 
+
+# # we dont need that in the vagrant environment....
+# # - name: setup escrow production site on a vagrant box
+# #   hosts: all
+# #   gather_facts: false
+# #   user: vagrant
+# #   sudo: yes
+# #   sudo_user: escrow
+# #   vars_files:
+# #     - vars/dev.yml
+# #   roles:
+# #     - escrow 
+
+# - name: run vagrant specific playbooks
+#   hosts: all
+#   gather_facts: false
+#   user: vagrant
+#   roles:
+#     - vagrant  

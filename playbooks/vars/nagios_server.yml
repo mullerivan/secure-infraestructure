@@ -1,0 +1,11 @@
+nagios_user: nagiosadmin
+nagios_password: nagiosadmin
+nagios_host: nagios.example.com
+nagios_admin_email: ops@example.com
+nagios_amdin_name: 'Nagios Admin'
+
+nagios_enable_pagerduty_notifications: true
+nagios_enable_ses_notifications: true
+
+legacy: false # set to true, for older builds of Ubuntu like Precise.
+ansible_distribution_release: 1.9.1

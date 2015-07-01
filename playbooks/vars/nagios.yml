@@ -1,0 +1,2 @@
+ansible_os_family: ubuntu
+ansible_processor_vcpus: 2

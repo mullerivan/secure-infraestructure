@@ -1,0 +1,28 @@
+---
+- name: install postgresql
+  apt: pkg={{ item }} state=latest update_cache=yes force=yes
+  with_items:
+    - python-psycopg2    
+    - postgresql-server-dev-all
+
+- name: postgresql-client
+  apt: pkg={{ item }} state=latest update_cache=yes force=yes
+  with_items:    
+    - postgresql-client
+
+- name: postgresql-contrib
+  apt: pkg={{ item }} state=latest update_cache=yes force=yes
+  with_items:    
+    - postgresql-contrib
+
+- name: create postgresql user
+  postgresql_user: name={{postgresql_user}}
+                   password={{postgresql_pass}}
+                   role_attr_flags=CREATEDB,NOSUPERUSER,LOGIN,INHERIT,NOREPLICATION
+  sudo_user: postgres
+
+- name: create postgresql database for {{postgresql_user}}
+  postgresql_db: name={{postgresql_db_name}}
+                 owner={{postgresql_user}}
+                 state=present
+  sudo_user: postgres    

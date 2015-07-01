@@ -1,0 +1,16 @@
+---
+- name: setup NFSEN
+  hosts: all
+  gather_facts: false
+  user: vagrant
+  sudo: yes
+  sudo_user: root
+  vars_files:
+    - vars/default.yml
+    - vars/nfsen.yml
+#  roles:
+#  - sfromm.nfsen
+    #role para instalar  en los clientes
+   #-  ansible-galaxy install sfromm.nfsen
+#https://galaxy.ansible.com/list#/roles/384
+

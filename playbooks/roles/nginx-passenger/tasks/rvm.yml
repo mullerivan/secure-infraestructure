@@ -1,0 +1,51 @@
+---
+- name: remomve old ruby
+  action: apt pkg={{item}} state=absent
+  with_items:
+    - ruby  
+
+# Ruby from source playbook (https://github.com/jgrowl/ansible-playbook-ruby-from-src)
+- name: apt-get upgrade 
+  action: apt update_cache=yes upgrade=yes
+
+- name: install ruby dependencies 
+  action: apt pkg={{item}} state=installed
+  with_items:
+    - build-essential
+    - automake
+    - bison
+    - autoconf
+    - pkg-config
+    - libreadline6
+    - libreadline6-dev
+    - openssl
+    - libssl-dev
+    - curl
+    - git-core
+    - zlib1g
+    - zlib1g-dev
+    - libyaml-dev
+    - libsqlite3-dev
+    - libxml2-dev
+    - libxslt1-dev
+    - curl
+    - libcurl4-openssl-dev
+    # - libmagickwand-dev
+
+- name: Install app dependencies 
+  action: apt pkg={{item}} state=installed
+  with_items:
+    - libpq-dev
+    - nodejs
+    - imagemagick
+#   RVM
+
+- name:  downloading the GPG signature
+  shell: gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+  sudo: true
+
+- name: Installing rvm ruby and rails take 16m5.124s up to your  internet conection
+  shell: \curl -sSL https://get.rvm.io | bash -s stable --rails
+  sudo: true
+
+

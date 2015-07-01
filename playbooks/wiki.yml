@@ -1,0 +1,12 @@
+---
+- name: setup Mail server
+  hosts: all
+  gather_facts: false
+  user: vagrant
+  sudo: yes
+  sudo_user: root
+  vars_files:
+    - vars/wiki.yml
+  #roles:
+   #- bcoe.nagios
+
