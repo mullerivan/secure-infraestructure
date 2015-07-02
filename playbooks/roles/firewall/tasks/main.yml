@@ -1,5 +1,3 @@
 ---
 - include: default_config.yml
-  when: load_defaul_config
 - include: persist_iptables_on_reboot.yml
-  when: persist_iptables_on_reboot

@@ -8,6 +8,13 @@
   vars_files:
     - vars/default.yml
     - vars/mail.yml
+  vars:
+    server_name: email-server
+    nagios_client: true
+    firewall_port_up: 25
+    nagios_server_ip: 10.22.22.10
   roles:
-   - essential
+   #- essential
+   - nagios
    - pbuyle.exim4 #==>https://galaxy.ansible.com/list#/roles/1699
+   #- firewall

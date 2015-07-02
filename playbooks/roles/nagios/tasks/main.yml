@@ -1,1 +1,6 @@
 - include: nagios.yml
+  when: nagios_server
+- include:  nagios_client.yml
+  when: nagios_client
+- include:  nagios_update_server.yml
+  when: nagios_update_server 

@@ -8,8 +8,15 @@
   vars_files:
     #- vars/nagios_cliente.yml
     - vars/nagios_server.yml
+  vars:
+    firewall_port_up: 80
+    nagios_server: false 
+    nagios_update_server: true
+    nagios_new_host: nfsen
+    nagios_host_ip: 10.22.22.50 
   roles:
    - nagios
+   #- firewall
     #role para instalar  en los clientes
    #- bobmaerten.nagios-nrpe-server
 #https://galaxy.ansible.com/list#/roles/384

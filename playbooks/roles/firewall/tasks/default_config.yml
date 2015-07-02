@@ -11,23 +11,14 @@
 - name: Accept ssh conection port 22
   shell: iptables -A INPUT -p tcp --dport 22  -j ACCEPT
 
-- name: Accept http conection port 80
-  shell: iptables -A INPUT -p tcp --dport 80  -j ACCEPT
+- name: Accept conection port 5666 nagios monitoring #non default port
+  shell: iptables -A INPUT -p tcp --dport 5666  -j ACCEPT
 
-- name: Accept http conection to jenkins
-  shell: iptables -A INPUT -p tcp --dport 8080  -j ACCEPT  
-
-- name: Accept https conection port 443
-  shell: iptables -A INPUT -p tcp --dport 443  -j ACCEPT
+- name: Accept conection port {{firewall_port_up}}
+  shell: iptables -A INPUT -p tcp --dport {{firewall_port_up}}  -j ACCEPT
 
 - name: localhost could conect anywhere
   shell: iptables -A INPUT -i lo -j ACCEPT
 
 - name: Politic INPUT DROP
   shell: iptables -P INPUT DROP
-
-# 445
-# 139
-# 53
-# 631
-# 111

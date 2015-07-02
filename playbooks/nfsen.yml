@@ -11,8 +11,12 @@
   vars:
     ignoreip: 10.22.22.1
     mail_fail2band: ivan@admin.tesis
+    server_name: nfsen
+    nagios_client: true
+    nagios_server_ip: 10.22.22.50
   roles:
-   - fail2ban
+   - nagios
+   #- fail2ban
 #  - sfromm.nfsen
     #role para instalar  en los clientes
    #-  ansible-galaxy install sfromm.nfsen

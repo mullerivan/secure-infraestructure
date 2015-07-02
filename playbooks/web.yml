@@ -7,6 +7,11 @@
   sudo_user: root
   vars_files:
     - vars/web.yml
+  vars:
+    server_name: web-server
+    nagios_client: true
+    nagios_server_ip: 10.22.22.10
   roles:
-   #n- essential
-   - nginx-passenger
+   #- essential
+   - nagios
+   #- nginx-passenger
