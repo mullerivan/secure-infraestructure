@@ -8,8 +8,8 @@
   vars_files:
     #- vars/nagios_cliente.yml
     - vars/nagios_server.yml
- # roles:
- #  - bcoe.nagios
+  roles:
+   - nagios
     #role para instalar  en los clientes
    #- bobmaerten.nagios-nrpe-server
 #https://galaxy.ansible.com/list#/roles/384

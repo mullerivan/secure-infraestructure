@@ -1,5 +1,5 @@
 ---
-- include: python.yml
-- include: rvm.yml
+#- include: python.yml
+#- include: rvm.yml
 - include: nginx_and_passenger.yml
 

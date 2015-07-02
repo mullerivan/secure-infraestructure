@@ -8,5 +8,5 @@
   vars_files:
     - vars/web.yml
   roles:
-   - essential
+   #n- essential
    - nginx-passenger

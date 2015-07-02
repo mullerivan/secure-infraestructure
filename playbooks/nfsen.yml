@@ -8,7 +8,11 @@
   vars_files:
     - vars/default.yml
     - vars/nfsen.yml
-#  roles:
+  vars:
+    ignoreip: 10.22.22.1
+    mail_fail2band: ivan@admin.tesis
+  roles:
+   - fail2ban
 #  - sfromm.nfsen
     #role para instalar  en los clientes
    #-  ansible-galaxy install sfromm.nfsen

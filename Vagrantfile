@@ -3,13 +3,16 @@
 Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/trusty64"
 #################Nagios
-    config.vm.define vm_name = "nagios-server" do |nagios|
+    config.vm.define vm_name = "nagios-server" do |nagios|#
        # Mount shared folder using nfs because is much faster
+       nagios.vm.network "forwarded_port", guest: 80, host: 9088
        nagios.vm.synced_folder ".", "/vagrant", nfs: true, mount_options:['nolock,vers=3,udp,noatime,actimeo=1']
        nagios.vm.network :private_network, ip: "10.22.22.10"
        nagios.vm.provision "ansible" do |ansible|
          ansible.playbook = "playbooks/nagios.yml"
          ansible.host_key_checking = false
+         ansible.verbose = 'vvvv'
+
        end 
   
        nagios.vm.provider :virtualbox do |vb|
@@ -66,7 +69,6 @@ Vagrant.configure("2") do |config|
 ###################Firewall
     config.vm.define vm_name = "firewall" do |firewall|
       #firewall.vm.network "forwarded_port", guest: 25, host: 9025
-  
       firewall.vm.synced_folder ".", "/vagrant", nfs: true, mount_options:['nolock,vers=3,udp,noatime,actimeo=1']
       firewall.vm.network :private_network, ip: "10.22.22.111"
       firewall.vm.provision "ansible" do |ansible|
@@ -81,7 +83,6 @@ Vagrant.configure("2") do |config|
 ######################### NfSen
   config.vm.define vm_name = "nfsen" do |nfsen|
   #firewall.network "forwarded_port", guest: 9995, host: 9995
-
    nfsen.vm.synced_folder ".", "/vagrant", nfs: true, mount_options:['nolock,vers=3,udp,noatime,actimeo=1']
     nfsen.vm.network :private_network, ip: "10.22.22.50"
     nfsen.vm.provision "ansible" do |ansible|
