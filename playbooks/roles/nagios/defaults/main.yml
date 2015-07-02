@@ -1,0 +1,4 @@
+nagios_update_server: false
+nagios_server: false 
+nagios_client: false
+

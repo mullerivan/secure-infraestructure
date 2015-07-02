@@ -1,0 +1,5 @@
+- name: copy new host template
+  template: src=example.cfg.j2 dest=/etc/nagios3/conf.d/{{nagios_new_host}}.tesis.cfg
+
+- name: restart server
+  shell: service nagios3 restart  

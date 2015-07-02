@@ -1,0 +1,28 @@
+define host {
+        use                     generic-host
+        host_name               {{nagios_new_host}}.tesis
+        alias                   {{nagios_new_host}}.tesis
+        address                 {{nagios_host_ip}}
+        }
+
+define service {
+        use                             generic-service
+        host_name                       {{nagios_new_host}}.tesis
+        service_description             PING
+        check_command                   check_ping!100.0,20%!500.0,60%
+        }
+
+define service {
+        use                             generic-service
+        host_name                       {{nagios_new_host}}.tesis
+        service_description             SSH
+        check_command                   check_ssh
+        notifications_enabled           0
+        }
+
+define service {
+        use                             generic-service
+        host_name                       {{nagios_new_host}}.tesis
+        service_description             Current Load
+        check_command                   check_load!5.0!4.0!3.0!10.0!6.0!4.0
+        }

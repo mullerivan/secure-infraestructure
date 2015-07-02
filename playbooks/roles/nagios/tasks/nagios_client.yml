@@ -1,0 +1,11 @@
+ 
+- name: Install Nagios Cient packages
+  apt: pkg={{ item }} state=latest update_cache=yes install_recommends=yes
+  with_items:
+  - nagios-plugins  
+  - nagios-nrpe-server
+
+- lineinfile: dest=/etc/nagios/nrpe.cfg  regexp="allowed_hosts=" line="allowed_hosts={{nagios_server_ip}}"
+
+- name: restart servevice
+  shell: service nagios-nrpe-server restart
